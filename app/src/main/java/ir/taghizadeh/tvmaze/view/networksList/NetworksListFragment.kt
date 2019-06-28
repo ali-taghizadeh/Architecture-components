@@ -1,4 +1,4 @@
-package ir.taghizadeh.tvmaze.view.shows
+package ir.taghizadeh.tvmaze.view.networksList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ir.taghizadeh.tvmaze.R
 
-class ShowsFragment : Fragment() {
+class NetworksListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_shows, container, false)
+        return inflater.inflate(R.layout.fragment_networks_list, container, false)
     }
 
 }
