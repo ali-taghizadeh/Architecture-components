@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/shows"
+            app:startDestination="@id/showsListFragment">
+
+    <fragment
+            android:id="@+id/showsListFragment"
+            android:name="ir.taghizadeh.tvmaze.view.showsList.ShowsListFragment"
+            android:label="ShowsListFragment">
+        <action
+                android:id="@+id/action_showsListToDetails"
+                app:destination="@id/showDetailsFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/showDetailsFragment"
+            android:name="ir.taghizadeh.tvmaze.view.showDetails.ShowDetailsFragment"
+            android:label="ShowDetailsFragment">
+        <argument
+                android:name="show_id"
+                app:argType="string"
+                android:defaultValue="NoValue"/>
+    </fragment>
+</navigation>
