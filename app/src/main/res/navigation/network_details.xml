@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/network_details"
+            app:startDestination="@id/networkDetailsFragment">
+
+    <fragment
+            android:id="@+id/networkDetailsFragment"
+            android:name="ir.taghizadeh.tvmaze.view.networkDetails.NetworkDetailsFragment"
+            android:label="NetworkDetailsFragment">
+        <argument
+                android:name="network_id"
+                app:argType="string"
+                android:defaultValue="NoValue"/>
+        <action
+                android:id="@+id/action_networkDetailsFragment_to_show_details"
+                app:destination="@id/network_to_show_details"/>
+    </fragment>
+    <navigation android:id="@+id/network_to_show_details"
+                app:startDestination="@id/show_details">
+        <include app:graph="@navigation/show_details"/>
+        <argument
+                android:name="show_id"
+                app:argType="string"
+                android:defaultValue="NoValue"/>
+    </navigation>
+</navigation>

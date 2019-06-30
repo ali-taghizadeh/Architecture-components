@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpNavigationBar() {
 
-        val navGraphIds = listOf(R.navigation.shows, R.navigation.people, R.navigation.networks)
+        val navGraphIds = listOf(
+            R.navigation.shows, R.navigation.people, R.navigation.networks
+        )
 
         val controller = bottomNavigationView.setupWithNavController(
             navGraphIds = navGraphIds,

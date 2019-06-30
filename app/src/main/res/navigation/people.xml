@@ -9,16 +9,16 @@
             android:name="ir.taghizadeh.tvmaze.view.peopleList.PeopleListFragment"
             android:label="PeopleListFragment">
         <action
-                android:id="@+id/action_peopleListToDetails"
-                app:destination="@id/peopleDetailsFragment"/>
+                android:id="@+id/action_peopleListFragment_to_people_details"
+                app:destination="@id/people_details"/>
     </fragment>
-    <fragment
-            android:id="@+id/peopleDetailsFragment"
-            android:name="ir.taghizadeh.tvmaze.view.peopleDetails.PeopleDetailsFragment"
-            android:label="PeopleDetailsFragment">
+    <navigation
+            android:id="@+id/people_details"
+            app:startDestination="@id/people_details">
+        <include app:graph="@navigation/people_details"/>
         <argument
                 android:name="people_id"
                 app:argType="string"
                 android:defaultValue="NoValue"/>
-    </fragment>
+    </navigation>
 </navigation>

@@ -24,7 +24,7 @@ class PeopleListFragment : Fragment() {
 
     private fun handleNavigation() {
         btn_people_details.setOnClickListener {
-            val action = PeopleListFragmentDirections.actionPeopleListToDetails()
+            val action = PeopleListFragmentDirections.actionPeopleListFragmentToPeopleDetails()
             action.peopleId = text_people_title.text.toString()
             findNavController().navigate(action)
         }

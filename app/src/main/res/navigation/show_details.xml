@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/show_details"
+            app:startDestination="@id/showDetailsFragment">
+
+    <fragment
+            android:id="@+id/showDetailsFragment"
+            android:name="ir.taghizadeh.tvmaze.view.showDetails.ShowDetailsFragment"
+            android:label="ShowDetailsFragment">
+        <argument
+                android:name="show_id"
+                app:argType="string"
+                android:defaultValue="NoValue"/>
+        <action
+                android:id="@+id/action_showDetailsFragment_to_people_details"
+                app:destination="@id/show_to_people_details"/>
+    </fragment>
+    <navigation android:id="@+id/show_to_people_details"
+                app:startDestination="@id/people_details">
+        <include app:graph="@navigation/people_details"/>
+        <argument
+                android:name="people_id"
+                app:argType="string"
+                android:defaultValue="NoValue"/>
+    </navigation>
+</navigation>

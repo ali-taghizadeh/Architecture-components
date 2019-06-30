@@ -24,7 +24,7 @@ class NetworksListFragment : Fragment() {
 
     private fun handleNavigation() {
         btn_network_details.setOnClickListener {
-            val action = NetworksListFragmentDirections.actionNetworksListToDetails()
+            val action = NetworksListFragmentDirections.actionNetworksListFragmentToNetworkDetails()
             action.networkId = text_network_title.text.toString()
             findNavController().navigate(action)
         }
