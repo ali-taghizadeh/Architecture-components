@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/people_details"
-            app:startDestination="@id/peopleDetailsFragment">
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/people_details"
+            app:startDestination="@id/peopleDetailsFragment"
+            tools:ignore="UnusedNavigation">
 
-    <fragment
-            android:id="@+id/peopleDetailsFragment"
-            android:name="ir.taghizadeh.tvmaze.view.peopleDetails.PeopleDetailsFragment"
-            android:label="PeopleDetailsFragment">
-        <argument
-                android:name="people_id"
-                app:argType="string"
-                android:defaultValue="NoValue"/>
-        <action
-                android:id="@+id/action_peopleDetailsFragment_to_show_details"
-                app:destination="@id/people_to_show_details"/>
+    <fragment android:id="@+id/peopleDetailsFragment"
+              android:name="ir.taghizadeh.tvmaze.view.peopleDetails.PeopleDetailsFragment"
+              android:label="PeopleDetailsFragment">
+        <argument android:name="people_id" app:argType="string"/>
+        <action android:id="@+id/peopleDetailsFragment_to_showDetailsFragment"
+                app:destination="@id/showDetailsFragment"/>
     </fragment>
-    <navigation android:id="@+id/people_to_show_details"
-                app:startDestination="@id/show_details">
+
+    <navigation android:id="@+id/showDetailsFragment" app:startDestination="@id/show_details">
         <include app:graph="@navigation/show_details"/>
-        <argument
-                android:name="show_id"
-                app:argType="string"
-                android:defaultValue="NoValue"/>
+        <argument android:name="show_id" app:argType="string"/>
     </navigation>
+
 </navigation>

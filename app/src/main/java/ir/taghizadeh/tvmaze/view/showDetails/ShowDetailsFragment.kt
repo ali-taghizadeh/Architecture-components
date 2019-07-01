@@ -24,6 +24,7 @@ class ShowDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
+        handleNavigation()
     }
 
     private fun handleNavigation() {
@@ -36,6 +37,18 @@ class ShowDetailsFragment : Fragment() {
 
     private fun initializeUi() {
         text_show_details_title.text = args.showId
+    }
+    private fun handleNavigation() {
+        btn_people_details.setOnClickListener {
+            val action = ShowDetailsFragmentDirections.showDetailsFragmentToPeopleDetailsFragment(text_people_title.text.toString())
+            findNavController().navigate(action)
+        }
+        btn_network_details.setOnClickListener {
+            val action = ShowDetailsFragmentDirections.showDetailsFragmentToNetworkDetailsFragment(text_network_title.text.toString())
+            findNavController().navigate(action)
+        }
+
+
     }
 
 }

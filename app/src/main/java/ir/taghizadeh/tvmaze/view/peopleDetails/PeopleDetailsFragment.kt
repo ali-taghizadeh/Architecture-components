@@ -24,6 +24,7 @@ class PeopleDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
+        handleNavigation()
     }
 
     private fun handleNavigation() {
@@ -36,6 +37,14 @@ class PeopleDetailsFragment : Fragment() {
 
     private fun initializeUi() {
         text_people_details_title.text = args.peopleId
+    }
+
+    private fun handleNavigation() {
+        btn_show_details.setOnClickListener {
+            val action =
+                PeopleDetailsFragmentDirections.peopleDetailsFragmentToShowDetailsFragment(text_show_title.text.toString())
+            findNavController().navigate(action)
+        }
     }
 
 }

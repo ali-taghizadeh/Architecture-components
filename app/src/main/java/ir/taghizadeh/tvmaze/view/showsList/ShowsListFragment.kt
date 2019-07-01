@@ -23,8 +23,7 @@ class ShowsListFragment : Fragment() {
 
     private fun handleNavigation() {
         btn_show_details.setOnClickListener {
-            val action = ShowsListFragmentDirections.actionShowsListFragmentToShowDetails()
-            action.showId = text_show_title.text.toString()
+            val action = ShowsListFragmentDirections.showsListFragmentToShowDetailsFragment(text_show_title.text.toString())
             findNavController().navigate(action)
         }
     }

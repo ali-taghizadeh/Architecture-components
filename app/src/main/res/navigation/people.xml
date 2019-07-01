@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/people"
-            app:startDestination="@id/peopleListFragment">
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/people"
+            app:startDestination="@id/peopleListFragment" tools:ignore="UnusedNavigation">
 
     <fragment
             android:id="@+id/peopleListFragment"
             android:name="ir.taghizadeh.tvmaze.view.peopleList.PeopleListFragment"
             android:label="PeopleListFragment">
-        <action
-                android:id="@+id/action_peopleListFragment_to_people_details"
-                app:destination="@id/people_details"/>
+        <action android:id="@+id/peopleListFragment_to_peopleDetailsFragment" app:destination="@id/peopleDetailsFragment"/>
     </fragment>
-    <navigation
-            android:id="@+id/people_details"
-            app:startDestination="@id/people_details">
+
+    <navigation android:id="@+id/peopleDetailsFragment" app:startDestination="@id/people_details">
         <include app:graph="@navigation/people_details"/>
-        <argument
-                android:name="people_id"
-                app:argType="string"
-                android:defaultValue="NoValue"/>
+        <argument android:name="people_id" app:argType="string"/>
     </navigation>
+
 </navigation>
