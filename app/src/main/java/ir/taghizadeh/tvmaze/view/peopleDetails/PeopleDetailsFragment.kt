@@ -27,7 +27,7 @@ class PeopleDetailsFragment : Fragment() {
     }
 
     private fun initializeUi() {
-        text_people_details_title.text = args.peopleId
+        text_people_details_title.text = getString(R.string.people_details, args.peopleId)
     }
 
     private fun handleNavigation() {

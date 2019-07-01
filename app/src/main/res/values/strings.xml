@@ -5,5 +5,9 @@
     <string name="menu_people">People</string>
     <string name="menu_networks">Networks</string>
 
-    <string name="show_details">details</string>
+    <string name="show_details">Show name : %s</string>
+    <string name="people_details">People name : %s</string>
+    <string name="network_details">Network name : %s</string>
+
+
 </resources>

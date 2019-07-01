@@ -31,7 +31,7 @@ class NetworkDetailsFragment : Fragment() {
     }
 
     private fun initializeUi() {
-        text_network_details_title.text = args.networkId
+        text_network_details_title.text = getString(R.string.network_details, args.networkId)
     }
 
     private fun handleNavigation() {

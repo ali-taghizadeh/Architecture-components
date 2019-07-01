@@ -27,7 +27,7 @@ class ShowDetailsFragment : Fragment() {
     }
 
     private fun initializeUi() {
-        text_show_details_title.text = args.showId
+        text_show_details_title.text = getString(R.string.show_details, args.showId)
     }
     private fun handleNavigation() {
         btn_people_details.setOnClickListener {
