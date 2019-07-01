@@ -28,15 +28,6 @@ class NetworkDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
-        handleNavigation()
-    }
-
-    private fun handleNavigation() {
-        btn_network_show_details.setOnClickListener {
-            var action = NetworkDetailsFragmentDirections.actionNetworkDetailsFragmentToShowDetails()
-            action.showId = text_network_show_title.text.toString()
-            findNavController().navigate(action)
-        }
     }
 
     private fun initializeUi() {

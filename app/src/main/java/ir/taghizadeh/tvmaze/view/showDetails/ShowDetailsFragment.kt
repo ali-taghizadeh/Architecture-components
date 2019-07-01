@@ -24,15 +24,6 @@ class ShowDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
-        handleNavigation()
-    }
-
-    private fun handleNavigation() {
-        btn_show_people_details.setOnClickListener {
-//            val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToPeopleDetails()
-//            action.peopleId = text_show_people_title.text.toString()
-//            findNavController().navigate(action)
-        }
     }
 
     private fun initializeUi() {
