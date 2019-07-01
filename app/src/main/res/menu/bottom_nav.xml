@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:title="Test"
-            android:id="@+id/test"/>
-    <item
             android:title="@string/menu_shows"
             android:id="@+id/shows"/>
     <item
