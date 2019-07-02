@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/artists"
-            app:startDestination="@id/artistListFragment" tools:ignore="UnusedNavigation">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/artists"
+            app:startDestination="@id/artistListFragment"
+            tools:ignore="UnusedNavigation">
 
     <fragment
             android:id="@+id/artistListFragment"
             android:name="ir.taghizadeh.deezer.view.artistList.ArtistListFragment"
             android:label="ArtistListFragment">
-        <action android:id="@+id/artistListFragment_to_artistDetailsFragment" app:destination="@id/artistDetailsFragment"/>
+        <action
+                android:id="@+id/artistListFragment_to_artistDetailsFragment"
+                app:destination="@id/artistDetailsFragment"
+                app:enterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"/>
     </fragment>
 
-    <navigation android:id="@+id/artistDetailsFragment" app:startDestination="@id/artist_details">
+    <navigation
+            android:id="@+id/artistDetailsFragment"
+            app:startDestination="@id/artist_details">
         <include app:graph="@navigation/artist_details"/>
-        <argument android:name="artist_id" app:argType="string"/>
+        <argument
+                android:name="artist_id"
+                app:argType="string"/>
     </navigation>
 
 </navigation>
