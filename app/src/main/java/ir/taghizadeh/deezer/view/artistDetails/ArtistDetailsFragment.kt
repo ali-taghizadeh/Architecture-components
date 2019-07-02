@@ -1,4 +1,4 @@
-package ir.taghizadeh.deezer.view.networkDetails
+package ir.taghizadeh.deezer.view.artistDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,18 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
-import kotlinx.android.synthetic.main.fragment_network_details.*
-import kotlinx.android.synthetic.main.fragment_network_details.btn_show_details
-import kotlinx.android.synthetic.main.fragment_network_details.text_show_title
+import kotlinx.android.synthetic.main.fragment_artist_details.*
+import kotlinx.android.synthetic.main.fragment_artist_details.text_track_title
 
-class NetworkDetailsFragment : Fragment() {
+class ArtistDetailsFragment : Fragment() {
 
-    private val args: NetworkDetailsFragmentArgs by navArgs()
+    private val args: ArtistDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_network_details, container, false)
+        return inflater.inflate(R.layout.fragment_artist_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,13 +28,13 @@ class NetworkDetailsFragment : Fragment() {
     }
 
     private fun initializeUi() {
-        text_network_details_title.text = getString(R.string.network_details, args.networkId)
+        text_artist_details_title.text = getString(R.string.artist_details, args.artistId)
     }
 
     private fun handleNavigation() {
-        btn_show_details.setOnClickListener {
+        btn_track_details.setOnClickListener {
             val action =
-                NetworkDetailsFragmentDirections.networkDetailsFragmentToShowDetailsFragment(text_show_title.text.toString())
+                ArtistDetailsFragmentDirections.artistDetailsFragmentToTrackDetailsFragment(text_track_title.text.toString())
             findNavController().navigate(action)
         }
     }

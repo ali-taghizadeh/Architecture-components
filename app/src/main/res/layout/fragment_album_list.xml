@@ -20,23 +20,22 @@
                 android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/text_network_title"
+                    android:id="@+id/text_album_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
-                    android:hint="Name of network"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_network_details"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_album_details"
                     android:layout_marginEnd="8dp"/>
 
             <Button
                     android:text="Details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btn_network_details"
+                    android:id="@+id/btn_album_details"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

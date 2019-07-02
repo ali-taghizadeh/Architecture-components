@@ -1,4 +1,4 @@
-package ir.taghizadeh.deezer.view.peopleDetails
+package ir.taghizadeh.deezer.view.albumDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,16 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
-import kotlinx.android.synthetic.main.fragment_people_details.*
+import kotlinx.android.synthetic.main.fragment_album_details.*
 
-class PeopleDetailsFragment : Fragment() {
+class AlbumDetailsFragment : Fragment() {
 
-    private val args: PeopleDetailsFragmentArgs by navArgs()
+    private val args: AlbumDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_people_details, container, false)
+        return inflater.inflate(R.layout.fragment_album_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,13 +27,13 @@ class PeopleDetailsFragment : Fragment() {
     }
 
     private fun initializeUi() {
-        text_people_details_title.text = getString(R.string.people_details, args.peopleId)
+        text_album_details_title.text = getString(R.string.album_details, args.albumId)
     }
 
     private fun handleNavigation() {
-        btn_show_details.setOnClickListener {
+        btn_track_details.setOnClickListener {
             val action =
-                PeopleDetailsFragmentDirections.peopleDetailsFragmentToShowDetailsFragment(text_show_title.text.toString())
+                AlbumDetailsFragmentDirections.albumDetailsFragmentToTrackDetailsFragment(text_track_title.text.toString())
             findNavController().navigate(action)
         }
     }

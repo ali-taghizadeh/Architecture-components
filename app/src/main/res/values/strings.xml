@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">TVMaze</string>
+    <string name="app_name">Deezer</string>
 
-    <string name="menu_shows">Shows</string>
-    <string name="menu_people">People</string>
-    <string name="menu_networks">Networks</string>
+    <string name="menu_track">Tracks</string>
+    <string name="menu_album">Albums</string>
+    <string name="menu_artist">Artist</string>
 
-    <string name="show_details">Show name : %s</string>
-    <string name="people_details">People name : %s</string>
-    <string name="network_details">Network name : %s</string>
+    <string name="track_details">Track name : %s</string>
+    <string name="album_details">Album name : %s</string>
+    <string name="artist_details">Artist name : %s</string>
 
 
 </resources>

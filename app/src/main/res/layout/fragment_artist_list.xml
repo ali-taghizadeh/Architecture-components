@@ -20,23 +20,22 @@
                 android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/text_people_title"
+                    android:id="@+id/text_artist_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
-                    android:hint="Name of people"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_people_details"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_artist_details"
                     android:layout_marginEnd="8dp"/>
 
             <Button
                     android:text="Details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btn_people_details"
+                    android:id="@+id/btn_artist_details"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

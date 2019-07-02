@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpNavigationBar() {
 
         val navGraphIds = listOf(
-            R.navigation.shows,
-            R.navigation.people,
-            R.navigation.networks
+            R.navigation.tracks,
+            R.navigation.albums,
+            R.navigation.artists
         )
 
         val controller = bottomNavigationView.setupWithNavController(

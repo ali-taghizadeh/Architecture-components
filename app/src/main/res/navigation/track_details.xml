@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/track_details"
+            app:startDestination="@id/trackDetailsFragment"
+            tools:ignore="UnusedNavigation">
+
+    <fragment android:id="@+id/trackDetailsFragment"
+              android:name="ir.taghizadeh.deezer.view.trackDetails.TrackDetailsFragment"
+              android:label="TrackDetailsFragment">
+        <argument android:name="track_id" app:argType="string"/>
+        <action android:id="@+id/trackDetailsFragment_to_artistDetailsFragment"
+                app:destination="@id/artistDetailsFragment"/>
+        <action android:id="@+id/trackDetailsFragment_to_albumDetailsFragment"
+                app:destination="@id/albumDetailsFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/artistDetailsFragment"
+              android:name="ir.taghizadeh.deezer.view.artistDetails.ArtistDetailsFragment"
+              android:label="ArtistDetailsFragment">
+        <argument android:name="artist_id" app:argType="string"/>
+        <action android:id="@+id/artistDetailsFragment_to_trackDetailsFragment"
+                app:destination="@id/trackDetailsFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/albumDetailsFragment"
+              android:name="ir.taghizadeh.deezer.view.albumDetails.AlbumDetailsFragment"
+              android:label="AlbumDetailsFragment">
+        <argument android:name="album_id" app:argType="string"/>
+        <action android:id="@+id/albumDetailsFragment_to_trackDetailsFragment"
+                app:destination="@id/trackDetailsFragment"/>
+    </fragment>
+
+</navigation>

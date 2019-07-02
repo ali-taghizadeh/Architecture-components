@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/artist_details"
+            app:startDestination="@id/artistDetailsFragment"
+            tools:ignore="UnusedNavigation">
+
+    <fragment android:id="@+id/artistDetailsFragment"
+              android:name="ir.taghizadeh.deezer.view.artistDetails.ArtistDetailsFragment"
+              android:label="ArtistDetailsFragment">
+        <argument android:name="artist_id" app:argType="string"/>
+        <action android:id="@+id/artistDetailsFragment_to_trackDetailsFragment"
+                app:destination="@id/trackDetailsFragment"/>
+    </fragment>
+
+    <navigation android:id="@+id/trackDetailsFragment" app:startDestination="@id/track_details">
+        <include app:graph="@navigation/track_details"/>
+        <argument android:name="track_id" app:argType="string"/>
+    </navigation>
+
+</navigation>
