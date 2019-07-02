@@ -11,11 +11,16 @@
         <argument android:name="album_id" app:argType="string"/>
         <action android:id="@+id/albumDetailsFragment_to_trackDetailsFragment"
                 app:destination="@id/trackDetailsFragment"/>
+        <action android:id="@+id/albumDetailsFragment_to_artistDetailsFragment" app:destination="@id/artistDetailsFragment"/>
     </fragment>
 
     <navigation android:id="@+id/trackDetailsFragment" app:startDestination="@id/track_details">
         <include app:graph="@navigation/track_details"/>
         <argument android:name="track_id" app:argType="string"/>
+    </navigation>
+    <navigation android:id="@+id/artistDetailsFragment" app:startDestination="@id/artist_details">
+        <include app:graph="@navigation/artist_details"/>
+        <argument android:name="artist_id" app:argType="string"/>
     </navigation>
 
 </navigation>

@@ -9,26 +9,20 @@
               android:name="ir.taghizadeh.deezer.view.trackDetails.TrackDetailsFragment"
               android:label="TrackDetailsFragment">
         <argument android:name="track_id" app:argType="string"/>
-        <action android:id="@+id/trackDetailsFragment_to_artistDetailsFragment"
-                app:destination="@id/artistDetailsFragment"/>
         <action android:id="@+id/trackDetailsFragment_to_albumDetailsFragment"
                 app:destination="@id/albumDetailsFragment"/>
+        <action android:id="@+id/trackDetailsFragment_to_artistDetailsFragment"
+                app:destination="@id/artistDetailsFragment"/>
     </fragment>
-
-    <fragment android:id="@+id/artistDetailsFragment"
-              android:name="ir.taghizadeh.deezer.view.artistDetails.ArtistDetailsFragment"
-              android:label="ArtistDetailsFragment">
-        <argument android:name="artist_id" app:argType="string"/>
-        <action android:id="@+id/artistDetailsFragment_to_trackDetailsFragment"
-                app:destination="@id/trackDetailsFragment"/>
-    </fragment>
-
     <fragment android:id="@+id/albumDetailsFragment"
               android:name="ir.taghizadeh.deezer.view.albumDetails.AlbumDetailsFragment"
               android:label="AlbumDetailsFragment">
         <argument android:name="album_id" app:argType="string"/>
-        <action android:id="@+id/albumDetailsFragment_to_trackDetailsFragment"
-                app:destination="@id/trackDetailsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/artistDetailsFragment"
+              android:name="ir.taghizadeh.deezer.view.artistDetails.ArtistDetailsFragment"
+              android:label="ArtistDetailsFragment">
+        <argument android:name="artist_id" app:argType="string"/>
     </fragment>
 
 </navigation>

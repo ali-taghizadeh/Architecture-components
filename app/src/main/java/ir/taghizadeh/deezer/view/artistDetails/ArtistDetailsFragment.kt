@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
 import kotlinx.android.synthetic.main.fragment_artist_details.*
-import kotlinx.android.synthetic.main.fragment_artist_details.text_track_title
 
 class ArtistDetailsFragment : Fragment() {
 
@@ -37,6 +36,12 @@ class ArtistDetailsFragment : Fragment() {
                 ArtistDetailsFragmentDirections.artistDetailsFragmentToTrackDetailsFragment(text_track_title.text.toString())
             findNavController().navigate(action)
         }
+        btn_album_details.setOnClickListener {
+            val action =
+                ArtistDetailsFragmentDirections.artistDetailsFragmentToAlbumDetailsFragment(text_album_title.text.toString())
+            findNavController().navigate(action)
+        }
+
     }
 
 }

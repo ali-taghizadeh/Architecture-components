@@ -36,6 +36,11 @@ class AlbumDetailsFragment : Fragment() {
                 AlbumDetailsFragmentDirections.albumDetailsFragmentToTrackDetailsFragment(text_track_title.text.toString())
             findNavController().navigate(action)
         }
+        btn_artist_details.setOnClickListener {
+            val action =
+                AlbumDetailsFragmentDirections.albumDetailsFragmentToArtistDetailsFragment(text_artist_title.text.toString())
+            findNavController().navigate(action)
+        }
     }
 
 }
