@@ -1,4 +1,4 @@
-package ir.taghizadeh.tvmaze.view.showDetails
+package ir.taghizadeh.deezer.view.showDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import ir.taghizadeh.tvmaze.R
+import ir.taghizadeh.deezer.R
 import kotlinx.android.synthetic.main.fragment_show_details.*
 
 class ShowDetailsFragment : Fragment() {

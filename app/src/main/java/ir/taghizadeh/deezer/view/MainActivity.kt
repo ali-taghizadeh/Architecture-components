@@ -1,4 +1,4 @@
-package ir.taghizadeh.tvmaze
+package ir.taghizadeh.deezer.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import ir.taghizadeh.tvmaze.extentions.setupWithNavController
+import ir.taghizadeh.deezer.R
+import ir.taghizadeh.deezer.extentions.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpNavigationBar() {
 
         val navGraphIds = listOf(
-            R.navigation.shows, R.navigation.people, R.navigation.networks
+            R.navigation.shows,
+            R.navigation.people,
+            R.navigation.networks
         )
 
         val controller = bottomNavigationView.setupWithNavController(

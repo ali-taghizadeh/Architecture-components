@@ -6,7 +6,7 @@
 
     <fragment
             android:id="@+id/showsListFragment"
-            android:name="ir.taghizadeh.tvmaze.view.showsList.ShowsListFragment"
+            android:name="ir.taghizadeh.deezer.view.showsList.ShowsListFragment"
             android:label="ShowsListFragment">
         <action android:id="@+id/showsListFragment_to_showDetailsFragment" app:destination="@id/showDetailsFragment"/>
     </fragment>

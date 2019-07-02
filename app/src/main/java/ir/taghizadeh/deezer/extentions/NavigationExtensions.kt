@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ir.taghizadeh.tvmaze.extentions
+package ir.taghizadeh.deezer.extentions
 
 import android.content.Intent
 import android.util.SparseArray
@@ -26,7 +26,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import ir.taghizadeh.tvmaze.R
+import ir.taghizadeh.deezer.R
 
 /**
  * Manages the various graphs needed for a [BottomNavigationView].

@@ -1,4 +1,4 @@
-package ir.taghizadeh.tvmaze.view.peopleList
+package ir.taghizadeh.deezer.view.peopleList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import ir.taghizadeh.tvmaze.R
+import ir.taghizadeh.deezer.R
 import kotlinx.android.synthetic.main.fragment_people_list.*
 
 class PeopleListFragment : Fragment() {

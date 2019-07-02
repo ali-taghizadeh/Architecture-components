@@ -1,4 +1,4 @@
-package ir.taghizadeh.tvmaze
+package ir.taghizadeh.deezer
 
 import org.junit.Test
 

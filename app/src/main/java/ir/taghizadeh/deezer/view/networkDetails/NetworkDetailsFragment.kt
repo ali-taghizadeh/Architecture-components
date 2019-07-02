@@ -1,4 +1,4 @@
-package ir.taghizadeh.tvmaze.view.peopleDetails
+package ir.taghizadeh.deezer.view.networkDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import ir.taghizadeh.tvmaze.R
-import kotlinx.android.synthetic.main.fragment_people_details.*
+import ir.taghizadeh.deezer.R
+import kotlinx.android.synthetic.main.fragment_network_details.*
+import kotlinx.android.synthetic.main.fragment_network_details.btn_show_details
+import kotlinx.android.synthetic.main.fragment_network_details.text_show_title
 
-class PeopleDetailsFragment : Fragment() {
+class NetworkDetailsFragment : Fragment() {
 
-    private val args: PeopleDetailsFragmentArgs by navArgs()
+    private val args: NetworkDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_people_details, container, false)
+        return inflater.inflate(R.layout.fragment_network_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,13 +29,13 @@ class PeopleDetailsFragment : Fragment() {
     }
 
     private fun initializeUi() {
-        text_people_details_title.text = getString(R.string.people_details, args.peopleId)
+        text_network_details_title.text = getString(R.string.network_details, args.networkId)
     }
 
     private fun handleNavigation() {
         btn_show_details.setOnClickListener {
             val action =
-                PeopleDetailsFragmentDirections.peopleDetailsFragmentToShowDetailsFragment(text_show_title.text.toString())
+                NetworkDetailsFragmentDirections.networkDetailsFragmentToShowDetailsFragment(text_show_title.text.toString())
             findNavController().navigate(action)
         }
     }
