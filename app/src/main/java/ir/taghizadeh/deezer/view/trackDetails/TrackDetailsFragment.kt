@@ -1,6 +1,7 @@
 package ir.taghizadeh.deezer.view.trackDetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
+import ir.taghizadeh.deezer.data.network.ApiClient
+import ir.taghizadeh.deezer.data.network.services.ArtistDetailsService
+import ir.taghizadeh.deezer.data.network.services.TrackDetailsService
 import kotlinx.android.synthetic.main.fragment_track_details.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class TrackDetailsFragment : Fragment() {
 
@@ -24,6 +31,11 @@ class TrackDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
+        val apiService = ApiClient.buildService(TrackDetailsService::class.java)
+        GlobalScope.launch(Dispatchers.Main) {
+            val trackDetails = apiService.getTrackDetails("3135556").await()
+            Log.d("TrackDetailsResponse: ", trackDetails.toString())
+        }
     }
 
     private fun initializeUi() {

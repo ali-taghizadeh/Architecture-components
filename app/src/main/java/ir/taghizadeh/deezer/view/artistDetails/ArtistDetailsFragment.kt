@@ -1,6 +1,7 @@
 package ir.taghizadeh.deezer.view.artistDetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
+import ir.taghizadeh.deezer.data.network.ApiClient
+import ir.taghizadeh.deezer.data.network.services.AlbumDetailsService
+import ir.taghizadeh.deezer.data.network.services.ArtistDetailsService
 import kotlinx.android.synthetic.main.fragment_artist_details.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ArtistDetailsFragment : Fragment() {
 
@@ -24,6 +31,11 @@ class ArtistDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
+        val apiService = ApiClient.buildService(ArtistDetailsService::class.java)
+        GlobalScope.launch(Dispatchers.Main) {
+            val artistDetails = apiService.getArtistDetails("27").await()
+            Log.d("ArtistDetailsResponse: ", artistDetails.toString())
+        }
     }
 
     private fun initializeUi() {
