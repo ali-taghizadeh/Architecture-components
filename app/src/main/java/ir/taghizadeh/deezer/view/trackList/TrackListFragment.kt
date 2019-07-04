@@ -28,7 +28,7 @@ class TrackListFragment : Fragment() {
         val apiService = ApiClient.buildService(ChartTracksService::class.java)
         GlobalScope.launch(Dispatchers.Main) {
             val chartTacks = apiService.getChartTracks().await()
-            Log.d("ChartTracksResponse: ", chartTacks.data.toString())
+            Log.d("ChartTracksResponse: ", chartTacks.toString())
         }
     }
 
