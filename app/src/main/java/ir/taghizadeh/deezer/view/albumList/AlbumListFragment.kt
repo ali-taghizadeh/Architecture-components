@@ -1,14 +1,14 @@
 package ir.taghizadeh.deezer.view.albumList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import ir.taghizadeh.deezer.R
-import ir.taghizadeh.deezer.data.network.ApiClient
+import ir.taghizadeh.deezer.data.network.config.ApiClient
 import ir.taghizadeh.deezer.data.network.services.ChartAlbumsService
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import kotlinx.coroutines.Dispatchers
@@ -29,14 +29,18 @@ class AlbumListFragment : Fragment() {
         handleNavigation()
         val apiService = ApiClient.buildService(ChartAlbumsService::class.java)
         GlobalScope.launch(Dispatchers.Main) {
-            val chartAlbums = apiService.getChartAlbums().await()
-            Log.d("ChartAlbumsResponse: ", chartAlbums.data.toString())
+            try {
+                apiService.getChartAlbums().await()
+            } catch (e: Throwable) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
     private fun handleNavigation() {
         btn_album_details.setOnClickListener {
-            val action = AlbumListFragmentDirections.albumListFragmentToAlbumDetailsFragment(text_album_title.text.toString())
+            val action =
+                AlbumListFragmentDirections.albumListFragmentToAlbumDetailsFragment(text_album_title.text.toString())
             findNavController().navigate(action)
         }
     }

@@ -1,7 +1,6 @@
-package ir.taghizadeh.deezer.data.network
+package ir.taghizadeh.deezer.data.network.config
 
 import com.safframework.http.interceptor.LoggingInterceptor
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,17 +8,8 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    private val requestInterceptor = Interceptor { chain ->
-        val url = chain.request()
-            .url()
-            .newBuilder()
-            .build()
-        val request = chain.request()
-            .newBuilder()
-            .url(url)
-            .build()
-        return@Interceptor chain.proceed(request)
-    }
+    private const val CONNECTION_TIMEOUT: Long = 10
+    private const val READ_TIMEOUT: Long = 10
 
     private val loggingInterceptor = LoggingInterceptor.Builder()
         .loggable(true)
@@ -30,10 +20,10 @@ object ApiClient {
         .build()
 
     private val okHttpClient = OkHttpClient.Builder()
-        .writeTimeout((30 * 1000).toLong(), TimeUnit.MILLISECONDS)
-        .readTimeout((20 * 1000).toLong(), TimeUnit.MILLISECONDS)
-        .connectTimeout((15 * 1000).toLong(), TimeUnit.MILLISECONDS)
-        .addInterceptor(requestInterceptor)
+        .retryOnConnectionFailure(true)
+        .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+        .addInterceptor(HeadersInterceptor())
         .addInterceptor(loggingInterceptor)
         .build()
 

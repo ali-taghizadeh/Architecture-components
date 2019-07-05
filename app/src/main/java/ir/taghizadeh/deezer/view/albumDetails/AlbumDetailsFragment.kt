@@ -1,15 +1,15 @@
 package ir.taghizadeh.deezer.view.albumDetails
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
-import ir.taghizadeh.deezer.data.network.ApiClient
+import ir.taghizadeh.deezer.data.network.config.ApiClient
 import ir.taghizadeh.deezer.data.network.services.AlbumDetailsService
 import kotlinx.android.synthetic.main.fragment_album_details.*
 import kotlinx.coroutines.Dispatchers
@@ -33,8 +33,11 @@ class AlbumDetailsFragment : Fragment() {
         initializeUi()
         val apiService = ApiClient.buildService(AlbumDetailsService::class.java)
         GlobalScope.launch(Dispatchers.Main) {
-            val albumDetails = apiService.getAlbumDetails("302127").await()
-            Log.d("AlbumDetailsResponse: ", albumDetails.toString())
+            try {
+                apiService.getAlbumDetails("302127").await()
+            } catch (e: Throwable) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
