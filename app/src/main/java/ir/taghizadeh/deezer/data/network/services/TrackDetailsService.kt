@@ -2,6 +2,7 @@ package ir.taghizadeh.deezer.data.network.services
 
 import ir.taghizadeh.deezer.data.network.responses.TrackDetailsResponse
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -9,5 +10,5 @@ import retrofit2.http.Path
 
 interface TrackDetailsService {
     @GET("track/{id}")
-    fun getTrackDetails(@Path("id") trackId: String): Deferred<TrackDetailsResponse>
+    fun getTrackDetails(@Path("id") trackId: String): Call<TrackDetailsResponse>
 }

@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_album_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.await
 
 class AlbumListFragment : Fragment() {
 

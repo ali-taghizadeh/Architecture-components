@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import ir.taghizadeh.deezer.R
 import ir.taghizadeh.deezer.data.network.ApiClient
-import ir.taghizadeh.deezer.data.network.services.ChartAlbumsService
 import ir.taghizadeh.deezer.data.network.services.ChartArtistsService
 import kotlinx.android.synthetic.main.fragment_artist_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.await
 
 class ArtistListFragment : Fragment() {
 

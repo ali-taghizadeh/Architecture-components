@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_artist_details.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.await
 
 class ArtistDetailsFragment : Fragment() {
 

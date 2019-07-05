@@ -1,13 +1,13 @@
 package ir.taghizadeh.deezer.data.network
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.safframework.http.interceptor.LoggingInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
-object ApiClient{
+object ApiClient {
 
     private val requestInterceptor = Interceptor { chain ->
         val url = chain.request()
@@ -21,19 +21,25 @@ object ApiClient{
         return@Interceptor chain.proceed(request)
     }
 
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
+    private val loggingInterceptor = LoggingInterceptor.Builder()
+        .loggable(true)
+        .request()
+        .requestTag("Request")
+        .response()
+        .responseTag("Response")
+        .build()
 
     private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
+        .writeTimeout((30 * 1000).toLong(), TimeUnit.MILLISECONDS)
+        .readTimeout((20 * 1000).toLong(), TimeUnit.MILLISECONDS)
+        .connectTimeout((15 * 1000).toLong(), TimeUnit.MILLISECONDS)
         .addInterceptor(requestInterceptor)
+        .addInterceptor(loggingInterceptor)
         .build()
 
     private val builder = Retrofit.Builder()
         .client(okHttpClient)
         .baseUrl("https://api.deezer.com/")
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(GsonConverterFactory.create())
 
     private val retrofit = builder.build()

@@ -2,6 +2,7 @@ package ir.taghizadeh.deezer.data.network.services
 
 import ir.taghizadeh.deezer.data.network.responses.AlbumDetailsResponse
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -9,5 +10,5 @@ import retrofit2.http.Path
 
 interface AlbumDetailsService {
     @GET("album/{id}")
-    fun getAlbumDetails(@Path("id") albumId: String): Deferred<AlbumDetailsResponse>
+    fun getAlbumDetails(@Path("id") albumId: String): Call<AlbumDetailsResponse>
 }

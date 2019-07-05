@@ -11,11 +11,11 @@ import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
 import ir.taghizadeh.deezer.data.network.ApiClient
 import ir.taghizadeh.deezer.data.network.services.AlbumDetailsService
-import ir.taghizadeh.deezer.data.network.services.ChartAlbumsService
 import kotlinx.android.synthetic.main.fragment_album_details.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.await
 
 class AlbumDetailsFragment : Fragment() {
 
