@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import ir.taghizadeh.deezer.R
 import ir.taghizadeh.deezer.data.network.config.ApiClient
 import ir.taghizadeh.deezer.data.network.services.ChartAlbumsService
+import ir.taghizadeh.deezer.utils.NoConnectivityException
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,12 +28,12 @@ class AlbumListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
-        val apiService = ApiClient.buildService(ChartAlbumsService::class.java)
+        val apiService = ApiClient.buildService(activity!!, ChartAlbumsService::class.java)
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 apiService.getChartAlbums().await()
-            } catch (e: Throwable) {
-                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            } catch (e: NoConnectivityException) {
+                Toast.makeText(activity, getString(R.string.message_error_no_connection), Toast.LENGTH_LONG).show()
             }
         }
     }

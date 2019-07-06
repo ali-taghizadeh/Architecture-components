@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import ir.taghizadeh.deezer.R
 import ir.taghizadeh.deezer.data.network.config.ApiClient
 import ir.taghizadeh.deezer.data.network.services.ArtistDetailsService
+import ir.taghizadeh.deezer.utils.NoConnectivityException
 import kotlinx.android.synthetic.main.fragment_artist_details.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -31,12 +32,12 @@ class ArtistDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
-        val apiService = ApiClient.buildService(ArtistDetailsService::class.java)
+        val apiService = ApiClient.buildService(activity!!, ArtistDetailsService::class.java)
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 apiService.getArtistDetails("27").await()
-            } catch (e: Throwable) {
-                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            } catch (e: NoConnectivityException) {
+                Toast.makeText(activity, getString(R.string.message_error_no_connection), Toast.LENGTH_LONG).show()
             }
         }
     }

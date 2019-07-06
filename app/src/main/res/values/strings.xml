@@ -9,5 +9,7 @@
     <string name="album_details">Album name : %s</string>
     <string name="artist_details">Artist name : %s</string>
 
+    <string name="message_error_no_connection">No internet connection</string>
+
 
 </resources>

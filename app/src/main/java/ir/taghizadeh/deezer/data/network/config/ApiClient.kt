@@ -1,5 +1,6 @@
 package ir.taghizadeh.deezer.data.network.config
 
+import android.content.Context
 import com.safframework.http.interceptor.LoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -8,33 +9,38 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    private const val CONNECTION_TIMEOUT: Long = 10
-    private const val READ_TIMEOUT: Long = 10
+    operator fun invoke(context: Context): Retrofit {
 
-    private val loggingInterceptor = LoggingInterceptor.Builder()
-        .loggable(true)
-        .request()
-        .requestTag("Request")
-        .response()
-        .responseTag("Response")
-        .build()
+        val CONNECTION_TIMEOUT: Long = 10
+        val READ_TIMEOUT: Long = 10
 
-    private val okHttpClient = OkHttpClient.Builder()
-        .retryOnConnectionFailure(true)
-        .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
-        .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-        .addInterceptor(HeadersInterceptor())
-        .addInterceptor(loggingInterceptor)
-        .build()
+        val loggingInterceptor = LoggingInterceptor.Builder()
+            .loggable(true)
+            .request()
+            .requestTag("Request")
+            .response()
+            .responseTag("Response")
+            .build()
 
-    private val builder = Retrofit.Builder()
-        .client(okHttpClient)
-        .baseUrl("https://api.deezer.com/")
-        .addConverterFactory(GsonConverterFactory.create())
+        val okHttpClient = OkHttpClient.Builder()
+            .retryOnConnectionFailure(true)
+            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            .addInterceptor(HeadersInterceptor())
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor(NetworkInterceptor(context))
+            .build()
 
-    private val retrofit = builder.build()
+        val builder = Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("https://api.deezer.com/")
+            .addConverterFactory(GsonConverterFactory.create())
 
-    fun <T> buildService(serviceType: Class<T>): T {
-        return retrofit.create(serviceType)
+        return builder.build()
     }
+
+    fun <T> buildService(context: Context, serviceType: Class<T>): T {
+        return invoke(context).create(serviceType)
+    }
+
 }
