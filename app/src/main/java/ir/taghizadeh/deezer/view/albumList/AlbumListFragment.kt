@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import ir.taghizadeh.deezer.R
 import ir.taghizadeh.deezer.data.network.config.ApiClient
 import ir.taghizadeh.deezer.data.network.services.ChartAlbumsService
-import ir.taghizadeh.deezer.utils.NoConnectivityException
 import kotlinx.android.synthetic.main.fragment_album_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.await
+import java.io.IOException
 
 class AlbumListFragment : Fragment() {
 
@@ -32,9 +31,7 @@ class AlbumListFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 apiService.getChartAlbums().await()
-            } catch (e: NoConnectivityException) {
-                Toast.makeText(activity, getString(R.string.message_error_no_connection), Toast.LENGTH_LONG).show()
-            }
+            } catch (e: IOException) {}
         }
     }
 
