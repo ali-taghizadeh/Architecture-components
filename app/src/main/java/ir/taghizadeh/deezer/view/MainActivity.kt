@@ -9,6 +9,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import ir.taghizadeh.deezer.R
 import ir.taghizadeh.deezer.extentions.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
 
 class MainActivity : AppCompatActivity() {
 

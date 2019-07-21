@@ -31,12 +31,12 @@ class TrackDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
-        val apiService = ApiClient.buildService(activity!!, TrackDetailsService::class.java)
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-                apiService.getTrackDetails("3135556").await()
-            } catch (e: IOException) {}
-        }
+//        val apiService = ApiClient.buildService(activity!!, TrackDetailsService::class.java)
+//        GlobalScope.launch(Dispatchers.Main) {
+//            try {
+//                apiService.getTrackDetails("3135556").await()
+//            } catch (e: IOException) {}
+//        }
     }
 
     private fun initializeUi() {

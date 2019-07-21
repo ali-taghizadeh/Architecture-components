@@ -27,12 +27,12 @@ class AlbumListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
-        val apiService = ApiClient.buildService(activity!!, ChartAlbumsService::class.java)
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-                apiService.getChartAlbums().await()
-            } catch (e: IOException) {}
-        }
+//        val apiService = ApiClient.buildService(activity!!, ChartAlbumsService::class.java)
+//        GlobalScope.launch(Dispatchers.Main) {
+//            try {
+//                apiService.getChartAlbums().await()
+//            } catch (e: IOException) {}
+//        }
     }
 
     private fun handleNavigation() {

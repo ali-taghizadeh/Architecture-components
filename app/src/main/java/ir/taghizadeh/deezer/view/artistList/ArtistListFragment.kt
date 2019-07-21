@@ -27,12 +27,12 @@ class ArtistListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
-        val apiService = ApiClient.buildService(activity!!, ChartArtistsService::class.java)
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-                apiService.getChartArtists().await()
-            } catch (e: IOException) {}
-        }
+//        val apiService = ApiClient.buildService(activity!!, ChartArtistsService::class.java)
+//        GlobalScope.launch(Dispatchers.Main) {
+//            try {
+//                apiService.getChartArtists().await()
+//            } catch (e: IOException) {}
+//        }
     }
 
     private fun handleNavigation() {

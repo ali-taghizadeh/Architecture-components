@@ -31,12 +31,12 @@ class ArtistDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
-        val apiService = ApiClient.buildService(activity!!, ArtistDetailsService::class.java)
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-                apiService.getArtistDetails("27").await()
-            } catch (e: IOException) {}
-        }
+//        val apiService = ApiClient.buildService(activity!!, ArtistDetailsService::class.java)
+//        GlobalScope.launch(Dispatchers.Main) {
+//            try {
+//                apiService.getArtistDetails("27").await()
+//            } catch (e: IOException) {}
+//        }
     }
 
     private fun initializeUi() {

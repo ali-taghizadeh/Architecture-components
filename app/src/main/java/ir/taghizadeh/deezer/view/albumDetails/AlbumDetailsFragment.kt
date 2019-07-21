@@ -31,12 +31,12 @@ class AlbumDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
         initializeUi()
-        val apiService = ApiClient.buildService(activity!!, AlbumDetailsService::class.java)
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-                apiService.getAlbumDetails("302127").await()
-            } catch (e: IOException) {}
-        }
+//        val apiService = ApiClient.buildService(activity!!, AlbumDetailsService::class.java)
+//        GlobalScope.launch(Dispatchers.Main) {
+//            try {
+//                apiService.getAlbumDetails("302127").await()
+//            } catch (e: IOException) {}
+//        }
     }
 
     private fun initializeUi() {

@@ -2,15 +2,18 @@ package ir.taghizadeh.deezer.data.repository
 
 
 import androidx.lifecycle.LiveData
+import ir.taghizadeh.deezer.data.db.TrackListDao
+import ir.taghizadeh.deezer.data.db.entity.Track
 import ir.taghizadeh.deezer.data.network.config.NetworkDataSource
 import ir.taghizadeh.deezer.data.network.responses.ChartTracksResponse
-import ir.taghizadeh.deezer.data.network.responses.TrackDetailsResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TrackListRepositoryImpl( networkDataSource: NetworkDataSource ) : TrackListRepository {
+class TrackListRepositoryImpl(
+    private val trackListDao: TrackListDao,
+    private val networkDataSource: NetworkDataSource ) : TrackListRepository {
 
     init {
         networkDataSource.apply {
@@ -20,15 +23,16 @@ class TrackListRepositoryImpl( networkDataSource: NetworkDataSource ) : TrackLis
         }
     }
 
-    private fun persistFetchedTrackList(newTrackList: TrackDetailsResponse) {
-        GlobalScope.launch(Dispatchers.IO) {}
+    private fun persistFetchedTrackList(newTrackList: ChartTracksResponse) {
+        GlobalScope.launch(Dispatchers.IO) {
+            trackListDao.upsert(newTrackList.data)
+        }
     }
 
-    override suspend fun getTrackList(): LiveData<out ChartTracksResponse> {
+    override suspend fun getTrackList(): LiveData<List<Track>> {
         return withContext(Dispatchers.IO) {
-            initWeatherData()
-            return@withContext if (metric) currentWeatherDao.getWeatherMetric()
-            else currentWeatherDao.getWeatherImperial()
+            networkDataSource.fetchTrackList()
+            return@withContext trackListDao.getTrackList()
         }
     }
 }

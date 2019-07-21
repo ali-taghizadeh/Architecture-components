@@ -1,6 +1,5 @@
 package ir.taghizadeh.deezer.data.network.config
 
-import android.content.Context
 import com.safframework.http.interceptor.LoggingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -9,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    operator fun invoke(context: Context): Retrofit {
+    operator fun invoke(): Retrofit {
 
         val CONNECTION_TIMEOUT: Long = 10
         val READ_TIMEOUT: Long = 10
@@ -28,7 +27,7 @@ object ApiClient {
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(HeadersInterceptor())
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(NetworkInterceptor(context))
+            .addInterceptor(NetworkInterceptor())
             .build()
 
         val builder = Retrofit.Builder()
@@ -39,8 +38,8 @@ object ApiClient {
         return builder.build()
     }
 
-    fun <T> buildService(context: Context, serviceType: Class<T>): T {
-        return invoke(context).create(serviceType)
+    fun <T> buildService(serviceType: Class<T>): T {
+        return invoke().create(serviceType)
     }
 
 }
